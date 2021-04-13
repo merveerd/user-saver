@@ -27,8 +27,9 @@ export const createUser = (params) => {
           payload: params,
         });
       })
+
       .catch((e) => {
-        console.log("err post", e.message);
+        console.log(JSON.stringify(e, undefined, 2));
 
         dispatch({
           type: CREATE_USER_FAILED,
@@ -37,8 +38,7 @@ export const createUser = (params) => {
   };
 };
 
-export const getUser = (params) => {
-  console.log("params", params);
+export const getUsers = () => {
   return (dispatch) => {
     dispatch({
       type: GET_USERS_START,
@@ -46,10 +46,9 @@ export const getUser = (params) => {
     console.log("start");
     axios
       .request({
-        method: "POST",
+        method: "GET",
         url: ` ${API_URL}/user`,
         responseType: "json",
-        data: params,
       })
       .then((response) => {
         console.log(response);

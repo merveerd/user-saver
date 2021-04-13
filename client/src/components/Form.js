@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { Button } from "./Button";
 import { createUser } from "../actions";
-const letterValidator = /^[a-z\s]+$/i;
+const letterValidator = /^[a-z\s]+$/i; //include language specific characters
 
 const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 4%;
+  margin: 2%;
   width: 35%;
   margin-left: 14%;
 `;
@@ -53,7 +53,6 @@ const UserForm = (props) => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const dispatch = useDispatch();
-  //   const users = useSelector((state) => state.usersResponse.users);
 
   const isValid = (err) => {
     let isValidBool = true;
@@ -82,7 +81,7 @@ const UserForm = (props) => {
 
   return (
     <FormContainer>
-      <h1 style={{ fontSize: "2rem" }}>Create User</h1>
+      <h3 style={{ fontSize: "2rem" }}>Create User</h3>
 
       <StyledForm>
         <InputContainer>

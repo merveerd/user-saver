@@ -1,10 +1,15 @@
-import React from "react";
-import { Header, UserForm } from "../components";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Header, UserForm, CountBox, Container } from "../components";
+
 const Main = (props) => {
   return (
     <>
       <Header text="React With NodeJS"></Header>
-      <UserForm />
+      <Container>
+        <UserForm />
+        <CountBox />
+      </Container>
     </>
   );
 };

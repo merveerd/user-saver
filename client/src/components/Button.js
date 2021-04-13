@@ -10,7 +10,7 @@ const StyledButton = styled.button`
   ${bg.red};
   ${font.white};
   ${fontSize.sm};
-  padding: 1.5%;
+  padding: 0.5rem;
   outline: none;
   &:hover {
     cursor: pointer;

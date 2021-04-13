@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Container } from "./StyledContainer";
 import { font, bg, fontSize } from "../style/sharedStyle";
 const StyledHeader = styled(Container)`
-  height: 7rem;
+  height: 6rem;
   justify-content: center;
   ${bg.beige};
   ${font.white};
