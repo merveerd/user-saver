@@ -1,4 +1,5 @@
 import axios from "axios";
+import { API_URL } from "../constants";
 import {
   CREATE_USER_START,
   CREATE_USER_FAILED,
@@ -11,15 +12,16 @@ export const createUser = (params) => {
     dispatch({
       type: CREATE_USER_START,
     });
-
+    console.log("start");
     axios
       .request({
         method: "POST",
-        url: requestMethod,
+        url: ` ${API_URL}/user`,
         responseType: "json",
-        data: requestParams,
+        data: params,
       })
       .then((response) => {
+        console.log(response);
         dispatch({
           type: CREATE_USER_SUCCESS,
           payload: params,

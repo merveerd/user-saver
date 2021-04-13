@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
 import { Button } from "./Button";
-
-const letterValidator = /[^a-zA-Z]/;
+import { createUser } from "../actions";
+const letterValidator = /^[a-z\s]+$/i;
 
 const FormContainer = styled.div`
   display: flex;
@@ -37,7 +38,6 @@ const InputContainer = styled.div`
   flex-direction: column;
   margin: 5%;
   margin-left: 0;
-
   width: 80%;
 `;
 const ErrorText = styled.p`
@@ -52,27 +52,32 @@ const UserForm = (props) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
+  const dispatch = useDispatch();
+  //   const users = useSelector((state) => state.usersResponse.users);
 
   const isValid = (err) => {
+    let isValidBool = true;
     if (!firstName || !letterValidator.test(firstName)) {
+      isValidBool = false;
       setFirstNameError("Required");
     }
     if (!lastName || !letterValidator.test(lastName)) {
+      isValidBool = false;
       setLastNameError("Required");
     }
     if (!email) {
+      isValidBool = false;
       setEmailError("Required");
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email)) {
-      console.log("non valid");
+      isValidBool = false;
       setEmailError("Invalid email address");
-    } else {
-      return true;
     }
+    return isValidBool;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    isValid() && console.log("valid");
+    isValid() && dispatch(createUser({ firstName, lastName, email }));
   };
 
   return (

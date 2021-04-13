@@ -6,11 +6,13 @@ import {
 
 const INITIAL_STATE = {
   users: [],
+  loading: false,
 };
 
 const State = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case CREATE_USER_START: {
+      console.log("start jkk");
       return { ...state, loading: true };
     }
     case CREATE_USER_SUCCESS: {

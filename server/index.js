@@ -13,7 +13,7 @@ app.get("/api", (req, res) => {
 });
 
 const userRoute = require("./routes/user.router");
-app.use("/api", userRoute);
+app.use("/api/user", userRoute);
 
 mongoose
   .connect(process.env.DB_URI, {
