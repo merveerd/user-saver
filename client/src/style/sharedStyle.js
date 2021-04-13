@@ -4,16 +4,16 @@ export const font = {
   white: css`
     color: #ffffff;
   `,
-  lightPurple: css`
-    color: #a060d1;
+  red: css`
+    color: red;
   `,
 
   lightGray: css`
     color: #9aa5b8;
   `,
 
-  pinky: css`
-    color: #f0b599;
+  beige: css`
+    color: #d5ac7e;
   `,
   whitesmoke: css`
     color: whitesmoke;
@@ -36,14 +36,14 @@ export const bg = {
   white: css`
     background-color: #ffffff;
   `,
-  lightPurple: css`
-    background-color: #a060d1;
+  red: css`
+    background-color: red;
   `,
   lightGray: css`
     background-color: #9aa5b8;
   `,
-  pinky: css`
-    background-color: #f0b599;
+  beige: css`
+    background-color: #d5ac7e;
   `,
   whitesmoke: css`
     background-color: whitesmoke;

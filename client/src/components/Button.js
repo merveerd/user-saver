@@ -7,8 +7,8 @@ const StyledButton = styled.button`
   border-radius: 10%;
   border: 5px solid #ffffff;
   box-sizing: border-box;
-  ${bg.pinky};
-  ${font.whitesmoke};
+  ${bg.red};
+  ${font.white};
   ${fontSize.sm};
   margin: 3%;
   padding: 3%;

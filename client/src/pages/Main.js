@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
-
+import { Header } from "../components";
 const Main = (props) => {
-  return <div>Hello</div>;
+  return <Header text="React With NodeJS"></Header>;
 };
 
 export default Main;
