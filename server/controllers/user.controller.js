@@ -11,6 +11,17 @@ const createOne = (model) => async (req, res) => {
   }
 };
 
+const getMany = (model) => async (req, res) => {
+  try {
+    const docs = await model.find();
+
+    res.status(200).json(docs);
+  } catch (err) {
+    res.status(404).json({ message: err });
+  }
+};
+
 module.exports = {
   createOne: createOne(user),
+  getMany: getMany(user),
 };
