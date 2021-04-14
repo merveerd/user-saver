@@ -2,7 +2,7 @@ module.exports = {
   apps: [
     {
       name: "client",
-      cwd: "/home/ubuntu/usersaver/client",
+      cwd: "/home/ubuntu/user-saver/client",
       script: "npm",
       args: "start",
       autorestart: true,
@@ -16,7 +16,7 @@ module.exports = {
     },
     {
       name: "server",
-      cwd: "/home/ubuntu/usersaver/client",
+      cwd: "/home/ubuntu/user-saver/client",
       script: "npm",
       args: "start",
       autorestart: true,
