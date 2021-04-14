@@ -9,4 +9,4 @@ export const device = {
   lg: `(min-width: ${size.lg})`,
 };
 
-export const API_URL = "http://18.192.78.125//api";
+export const API_URL = "http://18.192.78.125/api";
