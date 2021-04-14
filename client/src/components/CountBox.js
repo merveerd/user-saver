@@ -1,5 +1,6 @@
 import React, { memo, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Container } from "./StyledContainer";
 import { fontSize, font } from "../style/sharedStyle";
@@ -78,5 +79,11 @@ const CountBox = memo((props) => {
     </>
   );
 });
+
+CountBox.propTypes = {
+  count: PropTypes.number,
+  errorMessages: PropTypes.object,
+  loadError: PropTypes.string,
+};
 
 export { CountBox };

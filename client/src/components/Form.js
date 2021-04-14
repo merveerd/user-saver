@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Button } from "./Button";
 import { Title } from "./Title";
@@ -148,6 +149,16 @@ const UserForm = (props) => {
       </StyledForm>
     </FormContainer>
   );
+};
+
+UserForm.propTypes = {
+  users: PropTypes.array,
+  firstNameError: PropTypes.string,
+  lastNameError: PropTypes.string,
+  emailError: PropTypes.string,
+  firstName: PropTypes.string,
+  lastName: PropTypes.string,
+  email: PropTypes.string,
 };
 
 export { UserForm };

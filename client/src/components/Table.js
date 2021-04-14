@@ -2,6 +2,7 @@ import React, { memo } from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 import { device } from "../constants";
+import PropTypes from "prop-types";
 
 const StyledTable = styled.table`
   width: 70%;
@@ -74,5 +75,9 @@ const Table = memo((props) => {
     </>
   );
 });
+
+Table.propTypes = {
+  users: PropTypes.array,
+};
 
 export { Table };

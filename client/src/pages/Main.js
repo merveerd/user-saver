@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { Header, UserForm, CountBox, Container, Table } from "../components";
 import styled from "styled-components";
 import { device } from "../constants";
+import PropTypes from "prop-types";
 
 const UpperSection = styled(Container)`
   width: 70%;
@@ -28,4 +29,7 @@ const Main = (props) => {
   );
 };
 
+Main.propTypes = {
+  showUsers: PropTypes.bool,
+};
 export default Main;
