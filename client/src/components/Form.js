@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Button } from "./Button";
 import { Title } from "./Title";
 import { createUser } from "../actions";
+import { device } from "../constants";
 
 const letterValidator = /^[\p{L}'][ \p{L}'-]*[\p{L}]$/u; //include language specific characters
 const FormContainer = styled.div`
@@ -19,6 +20,12 @@ const StyledForm = styled.form`
     "firstname lastname"
     "email email"
     "submit submit";
+
+  @media only screen and ${device.sm} {
+    grid-gap: 0;
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const StyledLabel = styled.label`
@@ -36,6 +43,9 @@ const StyledInput = styled.input`
 const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
+  @media only screen and ${device.xs} {
+    margin: 4%;
+  }
 `;
 const ErrorText = styled.p`
   color: #d42e3f;

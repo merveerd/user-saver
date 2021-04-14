@@ -1,12 +1,18 @@
-import React, { memo, useEffect } from "react";
+import React, { memo } from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
-import { font, bg, fontSize } from "../style/sharedStyle";
+import { device } from "../constants";
+
 const StyledTable = styled.table`
   width: 70%;
   border-collapse: collapse;
   border-right: 2px solid #e6e6e6;
   border-top: 2px solid #e6e6e6;
+  table-layout: fixed;
+
+  @media only screen and ${device.sm} {
+    width: 95%;
+  }
 `;
 
 const StyledTh = styled.th`
@@ -18,6 +24,8 @@ const StyledTd = styled.td`
   padding: 0.5rem;
   border-left: 2px solid #e6e6e6;
   border-bottom: 2px solid #e6e6e6;
+
+  overflow: scroll;
 `;
 
 const Table = memo((props) => {

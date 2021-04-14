@@ -5,6 +5,7 @@ import { Container } from "./StyledContainer";
 import { fontSize, font } from "../style/sharedStyle";
 import { getUsers } from "../actions";
 import { Button } from "./Button";
+import { device } from "../constants";
 
 const StyledCountBox = styled(Container)`
   width: 30%;
@@ -18,6 +19,9 @@ const StyledCountBox = styled(Container)`
   margin-bottom: 9%;
   padding: 2%;
   ${fontSize.md};
+  @media only screen and ${device.sm} {
+    width: 70%;
+  }
 `;
 
 const Title = styled.p`

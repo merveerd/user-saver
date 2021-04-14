@@ -1,6 +1,7 @@
 import React, { memo } from "react";
 import styled from "styled-components";
-import { font, bg, fontSize } from "../style/sharedStyle";
+import { font, bg } from "../style/sharedStyle";
+import { device } from "../constants";
 const StyledButton = styled.button`
   width: 20%;
   align-self: center;
@@ -14,6 +15,9 @@ const StyledButton = styled.button`
   outline: none;
   &:hover {
     cursor: pointer;
+  }
+  @media only screen and ${device.xs} {
+    width: 60%;
   }
 `;
 
