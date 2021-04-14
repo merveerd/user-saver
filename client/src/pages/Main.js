@@ -1,16 +1,19 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { Header, UserForm, CountBox, Container } from "../components";
+import React from "react";
+import { useSelector } from "react-redux";
+import { Header, UserForm, CountBox, Container, Table } from "../components";
 
 const Main = (props) => {
+  let showUsers = useSelector((state) => state.usersResponse.showUsers);
+
   return (
-    <>
+    <Container style={{ justifyContent: "center" }}>
       <Header text="React With NodeJS"></Header>
-      <Container>
+      <Container style={{ width: "70%", justifyContent: "space-between" }}>
         <UserForm />
         <CountBox />
       </Container>
-    </>
+      {showUsers && <Table />}
+    </Container>
   );
 };
 

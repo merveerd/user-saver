@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
 import { Container } from "./StyledContainer";
@@ -7,9 +7,7 @@ import { getUsers } from "../actions";
 import { Button } from "./Button";
 
 const StyledCountBox = styled(Container)`
-  height: 15rem;
-  width: 25%;
-  margin-left: 10%;
+  width: 30%;
   display: grid;
   box-sizing: border-box;
   grid-template-areas:
@@ -17,6 +15,8 @@ const StyledCountBox = styled(Container)`
     "count count "
     "deneme deneme";
   background-color: #fec1fd;
+  margin-bottom: 9%;
+  padding: 2%;
   ${fontSize.md};
 `;
 
@@ -33,30 +33,45 @@ const Counter = styled.p`
   align-self: center;
   justify-self: center;
   ${font.red};
-  font-size: 4.4rem;
+  font-size: 4rem;
+`;
+const ErrorText = styled.p`
+  margin-left: 20%;
+  color: #d42e3f;
+  ${fontSize.sm};
 `;
 
 const CountBox = memo((props) => {
   const dispatch = useDispatch();
   let count = useSelector((state) => state.usersResponse.users.length);
+  let errorMessages = useSelector((state) => state.usersResponse.errorMessages);
+  const [loadError, setLoadError] = useState("");
+  useEffect(() => {
+    if (errorMessages.get) {
+      setLoadError(errorMessages.get);
+    }
+  }, [errorMessages]);
 
   return (
-    <StyledCountBox style={props.style}>
-      <Title>Users Created</Title>
-      <Counter>{count}</Counter>
-      <Button
-        text="Get all Users"
-        style={{
-          backgroundColor: "orange",
-          width: "70%",
-          color: "black",
-          marginLeft: "17%",
-        }}
-        onClick={() => {
-          dispatch(getUsers());
-        }}
-      />
-    </StyledCountBox>
+    <>
+      <StyledCountBox>
+        <Title>Users Created</Title>
+        <Counter>{count}</Counter>
+        <Button
+          text="Get all Users"
+          style={{
+            backgroundColor: "orange",
+            width: "100%",
+            color: "black",
+            marginLeft: "17%",
+          }}
+          onClick={() => {
+            dispatch(getUsers());
+          }}
+        />
+      </StyledCountBox>
+      {loadError && <ErrorText>{loadError}</ErrorText>}
+    </>
   );
 });
 

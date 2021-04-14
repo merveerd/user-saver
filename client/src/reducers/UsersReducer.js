@@ -10,6 +10,11 @@ import {
 const INITIAL_STATE = {
   users: [],
   loading: false,
+  showUsers: false,
+  errorMessages: {
+    get: "",
+    create: "",
+  },
 };
 
 const State = (state = INITIAL_STATE, action) => {
@@ -20,19 +25,29 @@ const State = (state = INITIAL_STATE, action) => {
     case CREATE_USER_SUCCESS: {
       const refUsers = [...state.users];
       refUsers.push(action.payload);
-      return { ...state, loading: false, users: refUsers };
+      return {
+        errorMessages: {},
+        loading: false,
+        users: refUsers,
+      };
     }
     case CREATE_USER_FAILED: {
-      return { ...state, loading: false };
+      return { ...state, loading: false, errorMessages: action.payload };
     }
     case GET_USERS_START: {
       return { ...state, loading: true };
     }
     case GET_USERS_SUCCESS: {
-      return { ...state, loading: false, users: action.payload };
+      return {
+        ...state,
+        loading: false,
+        users: action.payload,
+        errorMessages: {},
+        showUsers: true,
+      };
     }
     case GET_USERS_FAILED: {
-      return { ...state, loading: false };
+      return { ...state, loading: false, errorMessages: action.payload };
     }
 
     default:

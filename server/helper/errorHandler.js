@@ -9,7 +9,6 @@ const handleErrors = (err) => {
 
   // unique email error
   else if (err.code === 11000) {
-    console.log("error code is 11000");
     errors.email = "That email is already registered";
     return errors;
   }

@@ -19,7 +19,7 @@ export const font = {
 
 export const fontSize = {
   sm: css`
-    font-size: 1rem;
+    font-size: 0.9rem;
   `,
   md: css`
     font-size: 2rem;

@@ -29,21 +29,19 @@ export const createUser = (params) => {
       })
 
       .catch((e) => {
-        console.log(JSON.stringify(e, undefined, 2));
-
         dispatch({
           type: CREATE_USER_FAILED,
+          payload: { create: e.response.data.message },
         });
       });
   };
 };
 
-export const getUsers = () => {
+export const getUsers = (params) => {
   return (dispatch) => {
     dispatch({
       type: GET_USERS_START,
     });
-    console.log("start");
     axios
       .request({
         method: "GET",
@@ -51,17 +49,15 @@ export const getUsers = () => {
         responseType: "json",
       })
       .then((response) => {
-        console.log(response);
         dispatch({
           type: GET_USERS_SUCCESS,
           payload: response.data,
         });
       })
       .catch((e) => {
-        console.log("err post", e.message);
-
         dispatch({
           type: GET_USERS_FAILED,
+          payload: { get: e.response.data.message },
         });
       });
   };

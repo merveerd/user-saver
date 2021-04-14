@@ -9,7 +9,7 @@ const StyledButton = styled.button`
   box-sizing: border-box;
   ${bg.red};
   ${font.white};
-  ${fontSize.sm};
+
   padding: 0.5rem;
   outline: none;
   &:hover {

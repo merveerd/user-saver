@@ -13,20 +13,17 @@ const createOne = (model) => async (req, res) => {
     const doc = await model.create(req.body);
     res.status(200).json(doc);
   } catch (err) {
-    console.log("CAN'T POSTED", handleErrors(err));
-    res.status(400).json(handleErrors(err));
+    res.status(401).json({ message: "User is not created, please try again" });
   }
 };
 
 const getMany = (model) => async (req, res) => {
   try {
-    console.log("getMany");
     const docs = await model.find();
-    console.log("herre, docs");
     res.status(200).json(docs);
   } catch (err) {
     console.log(err);
-    res.status(404).json({ message: err });
+    res.status(401).json({ message: "Couldn't load the users" });
   }
 };
 

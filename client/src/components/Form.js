@@ -1,20 +1,20 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { Button } from "./Button";
+import { Title } from "./Title";
 import { createUser } from "../actions";
-const letterValidator = /^[a-z\s]+$/i; //include language specific characters
 
+const letterValidator = /^[\p{L}'][ \p{L}'-]*[\p{L}]$/u; //include language specific characters
 const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 2%;
-  width: 35%;
-  margin-left: 14%;
+  margin-bottom: 3%;
 `;
 
 const StyledForm = styled.form`
   display: grid;
+  grid-gap: 2rem;
   grid-template-areas:
     "firstname lastname"
     "email email"
@@ -36,9 +36,6 @@ const StyledInput = styled.input`
 const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 5%;
-  margin-left: 0;
-  width: 80%;
 `;
 const ErrorText = styled.p`
   color: #d42e3f;
@@ -53,16 +50,29 @@ const UserForm = (props) => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const dispatch = useDispatch();
+  let errorMessages = useSelector((state) => state.usersResponse.errorMessages);
 
-  const isValid = (err) => {
+  useEffect(() => {
+    if (errorMessages.create) {
+      setEmailError(errorMessages.create);
+    }
+  }, [errorMessages]);
+
+  const isValid = () => {
     let isValidBool = true;
-    if (!firstName || !letterValidator.test(firstName)) {
+    if (!firstName) {
       isValidBool = false;
       setFirstNameError("Required");
+    } else if (!letterValidator.test(firstName)) {
+      isValidBool = false;
+      setFirstNameError("Invalid First Name");
     }
-    if (!lastName || !letterValidator.test(lastName)) {
+    if (!lastName) {
       isValidBool = false;
       setLastNameError("Required");
+    } else if (!letterValidator.test(lastName)) {
+      isValidBool = false;
+      setLastNameError("Invalid Last Name");
     }
     if (!email) {
       isValidBool = false;
@@ -81,7 +91,7 @@ const UserForm = (props) => {
 
   return (
     <FormContainer>
-      <h3 style={{ fontSize: "2rem" }}>Create User</h3>
+      <Title text="Create User" />
 
       <StyledForm>
         <InputContainer>
@@ -108,7 +118,7 @@ const UserForm = (props) => {
           />
           <ErrorText>{lastNameError}</ErrorText>
         </InputContainer>
-        <InputContainer>
+        <InputContainer style={{ gridColumn: "span 2" }}>
           <StyledLabel>Email</StyledLabel>
           <StyledInput
             type="text"
