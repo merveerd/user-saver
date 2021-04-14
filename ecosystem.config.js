@@ -34,7 +34,7 @@ module.exports = {
       user: "ubuntu",
       host: "18.192.78.125",
       path: "/home/ubuntu/usersaver",
-      repo: "https://github.com/merveerd/user-saver.git",
+      repo: "git@github.com:merveerd/user-saver.git",
       ref: "origin/master",
       key: "/Users/adcolony/Documents/aws/user-recorder.pem",
       "post-deploy": "npm i; pm2 reload ecosystem.config.js --env production",
