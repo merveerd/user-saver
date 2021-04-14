@@ -19,7 +19,7 @@ const StyledCountBox = styled(Container)`
   margin-bottom: 9%;
   padding: 2%;
   ${fontSize.md};
-  @media only screen and ${device.sm} {
+  @media only screen and ${device.xs} {
     width: 70%;
   }
 `;

@@ -16,7 +16,7 @@ const StyledButton = styled.button`
   &:hover {
     cursor: pointer;
   }
-  @media only screen and ${device.xs} {
+  @media only screen and ${device.sm} {
     width: 60%;
   }
 `;

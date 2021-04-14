@@ -1,4 +1,3 @@
-const handleErrors = require("../helper/errorHandler");
 const user = require("../models/user.model");
 
 const createOne = (model) => async (req, res) => {
@@ -22,7 +21,6 @@ const getMany = (model) => async (req, res) => {
     const docs = await model.find();
     res.status(200).json(docs);
   } catch (err) {
-    console.log(err);
     res.status(401).json({ message: "Couldn't load the users" });
   }
 };
